@@ -1,0 +1,26 @@
+---
+
+- hosts: acore-server
+  become: true
+  tasks:
+
+  - name: apt update repository index
+    apt:
+      update_cache: yes
+
+  - name: install AzerothCore requirements
+    apt:
+      name:
+        - git
+        - make
+        - cmake
+        - gcc
+        - g++
+        - default-libmysqlclient-dev
+        - libssl-dev
+        - libbz2-dev
+        - libreadline-dev
+        - libncurses-dev
+        - mysql-server
+        - libboost-all-dev
+      state: latest

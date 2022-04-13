@@ -1,3 +1,5 @@
 ssh-keygen -t ed25519 -C "ansible"
 ssh-copy-id -i ~/.ssh/ansible.pub ubuntu@192.168.0.101
 ansible all --keyfile ~/.ssh/ansible -i inventory -m ping
+ansible all -m apt -a update_cache=true --become --ask-become-pass
+ansible-playbook --ask-become-pass install_reqs.yml
